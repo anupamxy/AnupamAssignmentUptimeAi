@@ -1,0 +1,138 @@
+<div class="activity-section">
+  <h2 class="activity-title">Activity overview</h2>
+
+  <div class="activity-content">
+    <div class="activity-left">
+      <!-- Contributed repos from Events API -->
+      @if (contributedRepos.length > 0) {
+        <p class="contributed-to">
+          Contributed to
+          @for (repo of contributedRepos; track repo; let i = $index; let last = $last) {
+            <a [href]="'https://github.com/' + repo" target="_blank">{{ repo }}</a><!--
+            -->@if (!last) {, }
+          }
+          @if (events.length > contributedRepos.length) {
+            and {{ events.length - contributedRepos.length }} other repositories
+          }
+        </p>
+      } @else {
+        <p class="contributed-to">
+          Contributed to
+          <a href="https://github.com/UptimeAI/uptime_webapp" target="_blank">UptimeAI/uptime_webapp</a>,
+          <a href="https://github.com/UptimeAI/uptime_server" target="_blank">UptimeAI/uptime_server</a>,
+          <a href="https://github.com/UptimeAI/uptime_ml" target="_blank">UptimeAI/uptime_ml</a>
+          and 13 other repositories
+        </p>
+      }
+    </div>
+
+    <div class="activity-right">
+      <div #pieChart class="pie-chart-container"></div>
+    </div>
+  </div>
+
+  <!-- Contribution activity (from Events API + Received Events API) -->
+  <div class="contribution-activity">
+    <h3 class="ca-title">Contribution activity</h3>
+
+    <div class="ca-month">
+      <h4 class="month-label">{{ getActivityMonth() }}</h4>
+
+      <!-- Summary from Events API -->
+      @if (commitCount > 0) {
+        <div class="ca-item">
+          <div class="ca-icon">
+            <svg height="16" viewBox="0 0 16 16" width="16" fill="#656d76">
+              <path d="M1.643 3.143.427 1.927A.25.25 0 0 1 .604 1.5h2.792a.25.25 0 0 1 .177.427L2.357 3.143a.25.25 0 0 1-.354 0ZM8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1Zm0 13a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path>
+            </svg>
+          </div>
+          <div class="ca-text">
+            Created <strong>{{ commitCount }} commits</strong> in {{ contributedRepos.length }} repositories
+          </div>
+        </div>
+      }
+
+      @if (prCount > 0) {
+        <div class="ca-item">
+          <div class="ca-icon">
+            <svg height="16" viewBox="0 0 16 16" width="16" fill="#656d76">
+              <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354Z"></path>
+            </svg>
+          </div>
+          <div class="ca-text">
+            Opened <strong>{{ prCount }} pull requests</strong>
+          </div>
+        </div>
+      }
+
+      @if (issueCount > 0) {
+        <div class="ca-item">
+          <div class="ca-icon">
+            <svg height="16" viewBox="0 0 16 16" width="16" fill="#656d76">
+              <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+            </svg>
+          </div>
+          <div class="ca-text">
+            Opened <strong>{{ issueCount }} issues</strong>
+          </div>
+        </div>
+      }
+
+      @if (reviewCount > 0) {
+        <div class="ca-item">
+          <div class="ca-icon">
+            <svg height="16" viewBox="0 0 16 16" width="16" fill="#656d76">
+              <path d="M1.679 7.932c.412-.621 1.242-1.75 2.366-2.717C5.175 4.242 6.527 3.5 8 3.5c1.473 0 2.824.742 3.955 1.715 1.124.967 1.954 2.096 2.366 2.717a.119.119 0 0 1 0 .136c-.412.621-1.242 1.75-2.366 2.717C10.825 11.758 9.473 12.5 8 12.5c-1.473 0-2.824-.742-3.955-1.715C2.92 9.818 2.09 8.69 1.679 8.068a.119.119 0 0 1 0-.136Z"></path>
+            </svg>
+          </div>
+          <div class="ca-text">
+            Reviewed <strong>{{ reviewCount }} pull requests</strong>
+          </div>
+        </div>
+      }
+
+      <!-- Recent activity timeline from Events API -->
+      @if (recentActivity.length > 0) {
+        <div class="ca-timeline">
+          <h4 class="timeline-label">Recent activity</h4>
+          @for (activity of recentActivity; track $index) {
+            <div class="ca-timeline-item">
+              <div class="ca-timeline-dot"></div>
+              <div class="ca-timeline-content">
+                <span>{{ activity.description }}
+                  <a [href]="'https://github.com/' + activity.repo" target="_blank"><strong>{{ activity.repo }}</strong></a>
+                </span>
+                <span class="ca-timeline-time">{{ getTimeAgo(activity.time) }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Received Events section -->
+      @if (receivedEvents.length > 0) {
+        <div class="ca-received">
+          <h4 class="timeline-label">Received activity</h4>
+          @for (event of receivedEvents.slice(0, 5); track event.id) {
+            <div class="ca-item">
+              <div class="ca-icon">
+                <img [src]="event.actor.avatar_url" width="16" height="16" class="actor-avatar" />
+              </div>
+              <div class="ca-text">
+                <a [href]="'https://github.com/' + event.actor.login" target="_blank" class="actor-link">{{ event.actor.login }}</a>
+                @switch (event.type) {
+                  @case ('WatchEvent') { starred }
+                  @case ('ForkEvent') { forked }
+                  @case ('PushEvent') { pushed to }
+                  @default { interacted with }
+                }
+                <a [href]="'https://github.com/' + event.repo.name" target="_blank"><strong>{{ event.repo.name }}</strong></a>
+                <span class="ca-timeline-time">{{ getTimeAgo(event.created_at) }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

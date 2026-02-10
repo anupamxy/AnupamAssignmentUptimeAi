@@ -1,0 +1,137 @@
+.repo-section {
+  margin-bottom: 24px;
+}
+
+.repo-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h2 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1f2328;
+    margin: 0;
+  }
+
+  .customize-link {
+    font-size: 12px;
+    color: #0969da;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.repo-card {
+  padding: 16px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+
+  .repo-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    .repo-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0969da;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .repo-visibility {
+      font-size: 12px;
+      color: #656d76;
+      border: 1px solid #d0d7de;
+      border-radius: 2em;
+      padding: 0 7px;
+      line-height: 18px;
+      display: inline-block;
+    }
+  }
+
+  .repo-description {
+    font-size: 12px;
+    color: #656d76;
+    margin: 0 0 16px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .repo-fork {
+    font-size: 12px;
+    color: #656d76;
+    margin-bottom: 8px;
+
+    a {
+      color: #656d76;
+      text-decoration: none;
+
+      &:hover {
+        color: #0969da;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .repo-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: #656d76;
+    margin-top: auto;
+
+    .repo-language {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      .language-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
+
+    .repo-stat {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      color: #656d76;
+      text-decoration: none;
+
+      &:hover {
+        color: #0969da;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .repo-grid {
+    grid-template-columns: 1fr;
+  }
+}

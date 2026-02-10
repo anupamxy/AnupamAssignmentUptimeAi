@@ -1,0 +1,200 @@
+.activity-section {
+  margin-top: 24px;
+}
+
+.activity-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2328;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.activity-content {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+
+  .activity-left {
+    flex: 1;
+
+    .contributed-to {
+      font-size: 14px;
+      color: #1f2328;
+      line-height: 1.5;
+
+      a {
+        color: #0969da;
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .activity-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    .pie-chart-container {
+      width: 280px;
+      height: 200px;
+    }
+  }
+}
+
+.contribution-activity {
+  margin-top: 32px;
+
+  .ca-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1f2328;
+    margin: 0 0 16px;
+  }
+
+  .ca-month {
+    .month-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f2328;
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #d0d7de;
+    }
+
+    .ca-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #d0d7de;
+      font-size: 14px;
+      color: #1f2328;
+
+      .ca-icon {
+        padding-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .ca-text {
+        strong {
+          font-weight: 600;
+        }
+
+        a {
+          color: #0969da;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .actor-link {
+          font-weight: 600;
+          color: #0969da;
+        }
+
+        .ca-timeline-time {
+          color: #656d76;
+          font-size: 12px;
+          margin-left: 4px;
+        }
+      }
+
+      .actor-avatar {
+        border-radius: 50%;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    // Timeline
+    .ca-timeline {
+      margin-top: 16px;
+
+      .timeline-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #656d76;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 12px;
+      }
+
+      .ca-timeline-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 6px 0;
+        font-size: 13px;
+        color: #1f2328;
+        position: relative;
+
+        .ca-timeline-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #d0d7de;
+          margin-top: 5px;
+          flex-shrink: 0;
+        }
+
+        .ca-timeline-content {
+          a {
+            color: #0969da;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          .ca-timeline-time {
+            color: #656d76;
+            font-size: 12px;
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+
+    // Received Events
+    .ca-received {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #d0d7de;
+
+      .timeline-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #656d76;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .activity-content {
+    flex-direction: column;
+
+    .activity-right {
+      width: 100%;
+
+      .pie-chart-container {
+        width: 100%;
+      }
+    }
+  }
+}
