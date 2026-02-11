@@ -1,6 +1,6 @@
 # GitHub Profile Clone - Angular Application
 
-A pixel-perfect clone of the GitHub user profile page built with **Angular 18**, using **15 real GitHub REST API endpoints** to fetch and display live data. No mock data is used — every section is powered by actual API responses.
+A pixel-perfect clone of the GitHub user profile page built with **Angular 18**, using **15 real GitHub REST API endpoints** to fetch and display live data. some mock data is used — i have tried  to get maximum section powered by actual API responses.
 
 ## Live Demo
 
