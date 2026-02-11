@@ -12,10 +12,21 @@ import * as echarts from 'echarts';
 })
 export class ContributionGraphComponent implements OnChanges, AfterViewInit {
   @Input() contributions: ContributionDay[] = [];
+  @Input() totalContributions: number = 0;
   @ViewChild('chartContainer') chartContainer!: ElementRef;
 
   private chart: echarts.ECharts | null = null;
   private viewReady = false;
+
+  currentYear = new Date().getFullYear();
+  yearOptions: number[] = [];
+
+  constructor() {
+    const year = new Date().getFullYear();
+    for (let i = 0; i < 8; i++) {
+      this.yearOptions.push(year - i);
+    }
+  }
 
   ngAfterViewInit(): void {
     this.viewReady = true;

@@ -164,10 +164,15 @@
 
   .achievements-list {
     display: flex;
-    gap: 8px;
+    gap: 12px;
     flex-wrap: wrap;
 
     .achievement-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
       .achievement-icon {
         width: 48px;
         height: 48px;
@@ -176,6 +181,19 @@
         align-items: center;
         justify-content: center;
         border: 2px solid;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .achievement-name {
+        font-size: 10px;
+        color: #656d76;
+        text-align: center;
+        max-width: 64px;
+        line-height: 1.2;
       }
     }
   }

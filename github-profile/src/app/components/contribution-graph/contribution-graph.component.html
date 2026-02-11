@@ -1,12 +1,50 @@
 <div class="contribution-graph-wrapper">
-  <div #chartContainer class="chart-container"></div>
-  <div class="contribution-legend">
-    <span class="legend-label">Less</span>
-    <span class="legend-box" style="background: #ebedf0"></span>
-    <span class="legend-box" style="background: #9be9a8"></span>
-    <span class="legend-box" style="background: #40c463"></span>
-    <span class="legend-box" style="background: #30a14e"></span>
-    <span class="legend-box" style="background: #216e39"></span>
-    <span class="legend-label">More</span>
+  <!-- Header -->
+  <div class="contribution-header">
+    <h2 class="contribution-count">{{ totalContributions | number }} contributions in the last year</h2>
+    <div class="contribution-settings">
+      <button class="settings-btn">
+        Contribution settings
+        <svg height="12" viewBox="0 0 16 16" width="12" fill="#656d76">
+          <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main content area with chart + year sidebar -->
+  <div class="contribution-body">
+    <!-- Chart -->
+    <div class="chart-area">
+      <div #chartContainer class="chart-container"></div>
+    </div>
+
+    <!-- Year selector sidebar -->
+    <div class="year-selector">
+      @for (year of yearOptions; track year) {
+        <button
+          class="year-btn"
+          [class.active]="year === currentYear"
+        >
+          {{ year }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="contribution-footer">
+    <a class="learn-link" href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/managing-contribution-settings-on-your-profile" target="_blank">
+      Learn how we count contributions
+    </a>
+    <div class="contribution-legend">
+      <span class="legend-label">Less</span>
+      <span class="legend-box" style="background: #ebedf0"></span>
+      <span class="legend-box" style="background: #9be9a8"></span>
+      <span class="legend-box" style="background: #40c463"></span>
+      <span class="legend-box" style="background: #30a14e"></span>
+      <span class="legend-box" style="background: #216e39"></span>
+      <span class="legend-label">More</span>
+    </div>
   </div>
 </div>

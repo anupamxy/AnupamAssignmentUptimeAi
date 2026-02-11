@@ -18,7 +18,7 @@ export class ActivityOverviewComponent implements AfterViewInit, OnChanges {
 
   private viewReady = false;
 
-  // Computed from events API
+
   commitCount = 0;
   prCount = 0;
   issueCount = 0;

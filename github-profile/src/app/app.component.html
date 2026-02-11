@@ -116,10 +116,7 @@
 
       <!-- Contribution Graph -->
       <div class="contribution-section">
-        <h2 class="contribution-title">
-          {{ getTotalContributions() | number }} contributions in the last year
-        </h2>
-        <app-contribution-graph [contributions]="contributions"></app-contribution-graph>
+        <app-contribution-graph [contributions]="contributions" [totalContributions]="getTotalContributions()"></app-contribution-graph>
       </div>
 
       <!-- Activity Overview -->
